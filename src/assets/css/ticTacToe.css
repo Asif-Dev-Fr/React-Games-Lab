@@ -1,0 +1,167 @@
+.ticTacToe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.container {
+  height: 500px;
+  padding-left: 35px;
+  margin-top: 20px;
+}
+
+.container .rowOne,
+.container .rowTwo,
+.container .rowThree {
+  height: 30%;
+}
+
+.container .rowOne .topLeft {
+  width: 150px;
+  border-bottom: 10px solid white;
+  border-right: 10px solid white;
+}
+
+.container .rowOne .topMiddle {
+  width: 150px;
+  border-bottom: 10px solid white;
+}
+
+.container .rowOne .topRight {
+  width: 150px;
+  border-bottom: 10px solid white;
+  border-left: 10px solid white;
+}
+
+.container .rowTwo .MiddleLeft {
+  width: 150px;
+  border-bottom: 10px solid white;
+  border-right: 10px solid white;
+}
+
+.container .rowTwo .MiddleCenter {
+  width: 150px;
+  border-bottom: 10px solid white;
+}
+
+.container .rowTwo .MiddleRight {
+  width: 150px;
+  border-bottom: 10px solid white;
+  border-left: 10px solid white;
+}
+
+.container .rowThree .BottomLeft {
+  width: 150px;
+  border-right: 10px solid white;
+}
+
+.container .rowThree .BottomCenter {
+  width: 150px;
+}
+
+.container .rowThree .BottomRight {
+  width: 150px;
+  border-left: 10px solid white;
+}
+
+.cross {
+  background-image: url("../images/croix.png");
+  background-size: contain;
+}
+
+.round {
+  background-image: url("../images/rond.png");
+  background-size: contain;
+}
+
+.centerElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreBoard {
+  width: 500px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding-left: 8px;
+  }
+
+  .scoreBoard {
+    width: 350px;
+  }
+
+  #cross {
+    width: 100px !important;
+  }
+
+  #round {
+    width: 100px !important;
+  }
+  
+  #topLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #topCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #topRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #middleLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #middleCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #middleRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #bottomLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #bottomCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #bottomRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

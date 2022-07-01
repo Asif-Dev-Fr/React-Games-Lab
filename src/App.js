@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TicTacToe from "./pages/tic-tac-toe/TicTacToe";
 import Homepage from "./pages/hompage/Homepage";
 import NavbarComponent from "./components/NavbarComponent";
+import Mastermind from "./pages/mastermind/Mastermind";
+import Memory from "./pages/memory/Memory";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
+          <Route path="/mastermind" element={<Mastermind />} />
+          <Route path="/memory" element={<Memory />} />
         </Routes>
       </Router>
     </div>

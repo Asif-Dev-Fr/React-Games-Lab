@@ -13,6 +13,10 @@ const NavbarComponent = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/tic-tac-toe">Tic Tac Toe</Nav.Link>
+            <Nav.Link href="/mastermind">Mastermind</Nav.Link>
+            <Nav.Link href="/memory">Memory</Nav.Link>
+
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>

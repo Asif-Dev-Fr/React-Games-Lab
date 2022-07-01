@@ -1,0 +1,82 @@
+.mastermind-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.bothElements {
+  display: flex;
+}
+
+.board {
+  width: 800px;
+}
+
+.board-row {
+  margin: 0 auto;
+  width: 90%;
+  height: 80px;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to left, #fff, rgba(0, 0, 0, 0)) 1 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.playable {
+  margin-left: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.shape {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  /* border: 7px solid #549adf;
+  box-shadow: 0px 0px 3px 3px #072849 inset; */
+  margin-left: 10px;
+}
+
+.results {
+  margin-right: 30px;
+}
+
+.optionsParent {
+  position: relative;
+}
+
+.optionsChild {
+  position: absolute;
+  top: -60px;
+  left: 8px;
+}
+
+.optionsRow {
+  width: 60px;
+  height: 30px;
+}
+
+.red {
+  background: red;
+}
+
+.blue {
+  background: rgb(30, 7, 145);
+}
+
+.yellow {
+  background: yellow;
+}
+
+.green {
+  background: green;
+}
+
+.shape button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}

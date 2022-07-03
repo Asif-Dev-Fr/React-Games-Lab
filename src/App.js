@@ -7,17 +7,19 @@ import Homepage from "./pages/hompage/Homepage";
 import NavbarComponent from "./components/NavbarComponent";
 import Mastermind from "./pages/mastermind/Mastermind";
 import Memory from "./pages/memory/Memory";
+import Wordle from "./pages/wordle/Wordle";
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <NavbarComponent />
+        <NavbarComponent />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
           <Route path="/mastermind" element={<Mastermind />} />
           <Route path="/memory" element={<Memory />} />
+          <Route path="/wordle" element={<Wordle />} />
         </Routes>
       </Router>
     </div>

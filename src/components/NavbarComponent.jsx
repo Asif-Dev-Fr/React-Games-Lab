@@ -15,8 +15,7 @@ const NavbarComponent = () => {
             <Nav.Link href="/tic-tac-toe">Tic Tac Toe</Nav.Link>
             <Nav.Link href="/mastermind">Mastermind</Nav.Link>
             <Nav.Link href="/memory">Memory</Nav.Link>
-
-
+            <Nav.Link href="/wordle">Wordle</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

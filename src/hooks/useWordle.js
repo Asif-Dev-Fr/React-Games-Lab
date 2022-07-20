@@ -6,6 +6,7 @@ const useWordle = (solution) => {
   const [guesses, setGuesses] = useState([...Array(6)]); // each guess is an array
   const [history, setHistory] = useState([]); // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false);
+  const [usedKeys, setUsedKeys] = useState({}); // {a: 'grey', b: 'green', c: 'yellow'} etc
 
   // format a guess into an array of letter objects
   // e.g. [{key: 'a', color: 'yellow'}]
@@ -39,21 +40,48 @@ const useWordle = (solution) => {
   // add one to the turn state
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
-      setIsCorrect(true)
+      setIsCorrect(true);
     }
-    setGuesses(prevGuesses => {
-      let newGuesses = [...prevGuesses]
+
+    setGuesses((prevGuesses) => {
+      let newGuesses = [...prevGuesses];
       // turn is the place in the array
-      newGuesses[turn] = formattedGuess
-      return newGuesses
-    })
-    setHistory(prevHistory => {
-      return [...prevHistory, currentGuess]
-    })
-    setTurn(prevTurn => {
-      return prevTurn + 1
-    })
-    setCurrentGuess('')
+      newGuesses[turn] = formattedGuess;
+      return newGuesses;
+    });
+
+    setHistory((prevHistory) => {
+      return [...prevHistory, currentGuess];
+    });
+
+    setTurn((prevTurn) => {
+      return prevTurn + 1;
+    });
+
+    setUsedKeys((prevUsedKeys) => {
+      let newKeys = { ...prevUsedKeys };
+      formattedGuess.forEach((l) => {
+        // Check if the letter has already been used
+        const getCurrentColor = newKeys[l.key];
+
+        if (l.color === "green") {
+          newKeys[l.key] = "green";
+          return;
+        }
+        if (l.color === "yellow" && getCurrentColor !== "green") {
+          newKeys[l.key] = "yellow";
+          return;
+        }
+        if (l.color === "grey" && getCurrentColor !== ("green" || "yellow")) {
+          newKeys[l.key] = "grey";
+          return;
+        }
+      });
+
+      return newKeys;
+    });
+
+    setCurrentGuess("");
   };
 
   // handle keyup event & track current guess
@@ -78,9 +106,9 @@ const useWordle = (solution) => {
         console.log("word must be 5 chars.");
         return;
       }
-      const formatted = formatGuess()
-      console.log(formatted)
-      addNewGuess(formatted)
+      const formatted = formatGuess();
+      console.log(formatted);
+      addNewGuess(formatted);
     }
 
     if (key === "Backspace") {
@@ -96,7 +124,7 @@ const useWordle = (solution) => {
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, handleKeyup };
+  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup };
 };
 
 export default useWordle;

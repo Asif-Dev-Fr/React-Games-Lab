@@ -1,14 +1,22 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import useWordle from "../../../hooks/useWordle";
 import Grid from "./Grid";
 import Keypad from "./Keypad";
 import Modal from "./Modal";
 
 export default function WordleFunction({ solution }) {
-  const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } =
-    useWordle(solution);
+  const {
+    currentGuess,
+    handleKeyup,
+    guesses,
+    isCorrect,
+    turn,
+    usedKeys,
+    setIsCorrect,
+    setGuesses,
+    setUsedKeys,
+  } = useWordle(solution);
   const [showModal, setShowModal] = useState(false);
-  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
@@ -24,25 +32,34 @@ export default function WordleFunction({ solution }) {
     }
 
     return () => window.removeEventListener("keyup", handleKeyup);
-  }, [handleKeyup, isCorrect, turn]);
+  }, [handleKeyup, isCorrect, turn, showModal]);
 
-  useEffect(() => {
-    console.log(guesses, turn, isCorrect);
-  }, [guesses, turn, isCorrect]);
+  // useEffect(() => {
+  //   console.log(guesses, turn, isCorrect);
+  // }, [guesses, turn, isCorrect]);
 
   const closeSideMenu = () => {
     if (showModal) {
+      setIsCorrect(false);
+      setGuesses([...Array(6)]);
+      setUsedKeys({});
       setShowModal(false);
-      forceUpdate();
+      window.location.reload();
     }
   };
 
+  const keypadLetters = (letter) => {
+    console.log(letter)
+    let obj = {
+      key: letter
+    }
+    handleKeyup(obj)
+  }
+
   return (
     <div>
-      <div>solution - {solution}</div>
-      <div>Current Guess - {currentGuess}</div>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
-      <Keypad usedKeys={usedKeys} />
+      <Keypad usedKeys={usedKeys} keypadLetters={keypadLetters} />
       {showModal && (
         <Modal
           isCorrect={isCorrect}

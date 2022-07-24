@@ -51,7 +51,7 @@
   animation: bounce 0.2s ease-in-out;
 }
 
-.keypad {
+.keypad, .buttons {
   max-width: 500px;
   margin: 20px auto;
 }
@@ -63,6 +63,7 @@
   display: inline-block;
   border-radius: 6px;
   line-height: 50px;
+  cursor: pointer;
 }
 
 .keypad > div.green {

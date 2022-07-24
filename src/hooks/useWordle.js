@@ -124,7 +124,17 @@ const useWordle = (solution) => {
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup };
+  return {
+    turn,
+    currentGuess,
+    guesses,
+    isCorrect,
+    usedKeys,
+    handleKeyup,
+    setIsCorrect,
+    setGuesses,
+    setUsedKeys
+  };
 };
 
 export default useWordle;

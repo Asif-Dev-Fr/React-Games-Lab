@@ -16,6 +16,9 @@ const Homepage = () => {
       <button className="btn btn-info mt-2">
         <Link to="/wordle">Wordle</Link>
       </button>
+      <button className="btn btn-info mt-2">
+        <Link to="/countriesQuizz">Countries Quizz</Link>
+      </button>
     </div>
   );
 };

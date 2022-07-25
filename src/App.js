@@ -8,6 +8,7 @@ import NavbarComponent from "./components/NavbarComponent";
 import Mastermind from "./pages/mastermind/Mastermind";
 import Memory from "./pages/memory/Memory";
 import Wordle from "./pages/wordle/Wordle";
+import CountriesQuizz from "./pages/countriesQuizz/CountriesQuizz";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/mastermind" element={<Mastermind />} />
           <Route path="/memory" element={<Memory />} />
           <Route path="/wordle" element={<Wordle />} />
+          <Route path="/countriesQuizz" element={<CountriesQuizz />} />
         </Routes>
       </Router>
     </div>

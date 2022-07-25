@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "../../assets/css/ticTacToe.css";
 import cross from "../../assets/images/croix.png";
 import round from "../../assets/images/rond.png";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 const TicTacToe = () => {
   const [scorePlayerOne, setScorePlayerOne] = useState(0);
   const [scorePlayerTwo, setScorePlayerTwo] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(1);
-  const [isActive, setActive] = useState({
+  const [isActive] = useState({
     topLeft: true,
     topCenter: true,
     topRight: true,
@@ -141,13 +141,17 @@ const TicTacToe = () => {
           ></div>
           <div
             id="middleCenter"
-            style={isActive["middleCenter"] === true ? { cursor: "pointer" } : {}}
+            style={
+              isActive["middleCenter"] === true ? { cursor: "pointer" } : {}
+            }
             className="MiddleCenter col-lg-4 "
             onClick={(e) => toggleAndCheck(e)}
           ></div>
           <div
             id="middleRight"
-            style={isActive["middleRight"] === true ? { cursor: "pointer" } : {}}
+            style={
+              isActive["middleRight"] === true ? { cursor: "pointer" } : {}
+            }
             className="MiddleRight col-lg-4 "
             onClick={(e) => toggleAndCheck(e)}
           ></div>
@@ -161,13 +165,17 @@ const TicTacToe = () => {
           ></div>
           <div
             id="bottomCenter"
-            style={isActive["bottomCenter"] === true ? { cursor: "pointer" } : {}}
+            style={
+              isActive["bottomCenter"] === true ? { cursor: "pointer" } : {}
+            }
             className="BottomCenter col-lg-4"
             onClick={(e) => toggleAndCheck(e)}
           ></div>
           <div
             id="bottomRight"
-            style={isActive["bottomRight"] === true ? { cursor: "pointer" } : {}}
+            style={
+              isActive["bottomRight"] === true ? { cursor: "pointer" } : {}
+            }
             className="BottomRight col-lg-4"
             onClick={(e) => toggleAndCheck(e)}
           ></div>

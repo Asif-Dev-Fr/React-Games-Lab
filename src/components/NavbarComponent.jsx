@@ -16,6 +16,7 @@ const NavbarComponent = () => {
             <Nav.Link href="/mastermind">Mastermind</Nav.Link>
             <Nav.Link href="/memory">Memory</Nav.Link>
             <Nav.Link href="/wordle">Wordle</Nav.Link>
+            <Nav.Link href="/countriesQuizz">Countries Quizz</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

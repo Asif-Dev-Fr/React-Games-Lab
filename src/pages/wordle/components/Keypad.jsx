@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as lettersList from "../../../assets/data/wordleData/letters.json";
 
 const Keypad = ({ usedKeys, keypadLetters }) => {
-  const [letters, setLetters] = useState(lettersList);
+  const [letters] = useState(lettersList);
   return (
     <>
       <div className="keypad">

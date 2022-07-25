@@ -23,11 +23,9 @@ export default function WordleFunction({ solution }) {
 
     if (isCorrect) {
       setTimeout(() => setShowModal(true), 2000);
-      console.log(showModal);
       window.removeEventListener("keyup", handleKeyup);
     } else if (turn > 5) {
       setTimeout(() => setShowModal(true), 2000);
-      console.log(showModal);
       window.removeEventListener("keyup", handleKeyup);
     }
 

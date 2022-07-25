@@ -87,7 +87,7 @@ const useWordle = (solution) => {
   // handle keyup event & track current guess
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }) => {
-    console.log("key pressed - ", key);
+    // console.log("key pressed - ", key);
 
     if (key === "Enter") {
       // Must pass all those conditions to fire the formatGuess function
@@ -107,7 +107,7 @@ const useWordle = (solution) => {
         return;
       }
       const formatted = formatGuess();
-      console.log(formatted);
+      // console.log(formatted);
       addNewGuess(formatted);
     }
 

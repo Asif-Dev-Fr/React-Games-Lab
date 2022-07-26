@@ -1,0 +1,22 @@
+.selectGameMode {
+  margin-top: 200px;
+}
+
+.selectGameMode div {
+  text-align: center;
+  border: 2px solid snow;
+  height: 250px;
+  width: 250px;
+  line-height: 250px;
+  border-radius: 8px;
+  vertical-align: middle;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.question {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}

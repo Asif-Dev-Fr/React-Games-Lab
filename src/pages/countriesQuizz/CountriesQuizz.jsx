@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Quizz from "./components/Quizz";
+import "../../assets/css/quizz.css";
 
 const CountriesQuizz = () => {
   const [countries, setCountries] = useState([]);
-  const [allCountries, setAllCountries] = useState([])
+  const [allCountries, setAllCountries] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // Methods :
   const fetchCountries = async () => {
+    setLoading(true);
     try {
       const response = await axios(process.env.REACT_APP_COUNTRY_QUIZZ_API);
       // console.log(response);
       if (response && response.data) {
-        // List of all countries 
-        setAllCountries(response.data)  
+        // List of all countries
+        setAllCountries(response.data);
         // Shuffle array
         const shuffled = response.data.sort(() => 0.5 - Math.random());
 
@@ -22,8 +25,10 @@ const CountriesQuizz = () => {
         console.log(randomCountries);
         setCountries(randomCountries);
       }
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -32,9 +37,11 @@ const CountriesQuizz = () => {
   }, []);
 
   return (
-    <div>
-      <Quizz countries={countries} allCountries={allCountries} />
-    </div>
+    !loading && (
+      <div>
+        <Quizz countries={countries} allCountries={allCountries} />
+      </div>
+    )
   );
 };
 

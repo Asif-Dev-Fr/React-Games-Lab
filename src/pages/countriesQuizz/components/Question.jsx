@@ -1,40 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-const Question = ({ country, allCountries }) => {
-  const [randomCountryName, setRandomCountryName] = useState([]);
-  console.log(country);
+const Question = ({ country, randomCountryName }) => {
+  console.log(country, randomCountryName);
+  const [answerArray, setAnswerArray] = useState([])
 
-  // Methods :
-  const generateRandomAnswer = async () => {
-    try {
-      if (allCountries) {
-        // Shuffle array
-        const shuffled = allCountries.sort(() => 0.5 - Math.random());
-
-        // Get sub-array of first n elements after shuffled
-        let randomName = shuffled.slice(40, 45);
-        console.log(randomName);
-        for (let random of randomName) {
-          console.log(random);
-          if (random.name.official !== country.name.official) {
-            console.log("first");
-            setRandomCountryName((prev) => {
-              return [...prev, random.name.official];
-            });
-          }
-        }
-        console.log(randomCountryName);
-      }
-    } catch (error) {
-      console.error(error);
+  useEffect(() => { 
+    if(!randomCountryName.includes(country.name.official)) {
+      let randomPlace = Math.floor(Math.random() * randomCountryName.length);
+      let tmpArray = randomCountryName
+      tmpArray.pop();
+      tmpArray.splice(randomPlace, 0, country.name.official)
+      console.log(tmpArray)
+      setAnswerArray(tmpArray)
     }
-  };
-
-  useEffect(() => {
-    generateRandomAnswer();
-  }, [country]);
+  }, [randomCountryName])
+ 
   return (
-    <div>
+    <div className="question">
       <div>{country.name.official}</div>
     </div>
   );

@@ -28,10 +28,10 @@ const Quizz = ({ countries, allCountries }) => {
         let tmpArray = [];
         if ((firstAnswer, secondAnswer, thirdAnswer, fourthAnswer)) {
           tmpArray.push(
-            firstAnswer.name.official,
-            secondAnswer.name.official,
-            thirdAnswer.name.official,
-            fourthAnswer.name.official
+            firstAnswer.name.common,
+            secondAnswer.name.common,
+            thirdAnswer.name.common,
+            fourthAnswer.name.common
           );
         }
         setRandomCountryName(tmpArray);

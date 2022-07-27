@@ -17,6 +17,32 @@
 .question {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 100px;
+}
+
+.question .flag {
+  margin-bottom: 20px;
+}
+
+.question .answers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.question .answers .answer {
+  cursor: pointer;
+  margin: 5px;
+  width: 40%;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  font-style: oblique;
+  -webkit-box-shadow: 0px 3px 3px 3px #000000;
+  box-shadow: 0px 3px 3px 3px #000000;
 }

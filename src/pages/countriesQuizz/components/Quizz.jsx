@@ -71,6 +71,7 @@ const Quizz = ({ countries, allCountries }) => {
                 <Question
                   country={country}
                   randomCountryName={randomCountryName}
+                  generateRandomAnswer={generateRandomAnswer}
                 />
               )}
             </React.Fragment>

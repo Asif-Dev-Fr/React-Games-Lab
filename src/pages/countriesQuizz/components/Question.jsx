@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Modal from "../../../components/Modal";
 
-const Question = ({ country, randomCountryName, generateRandomAnswer }) => {
+const Question = ({ country, randomCountryName, generateRandomAnswer, nextQuestion }) => {
   console.log(country, randomCountryName);
   const [answerArray, setAnswerArray] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   // Methods
   useEffect(() => {
@@ -14,37 +17,52 @@ const Question = ({ country, randomCountryName, generateRandomAnswer }) => {
       console.log(tmpArray);
       setAnswerArray(tmpArray);
     }
-  }, [randomCountryName]);
+  }, []);
 
   const selectAnswer = (answer) => {
     if (answer === country.name.common) {
+      setIsCorrect(true);
+      setShowModal(true);
+      generateRandomAnswer()
       console.log("Right answer");
-      generateRandomAnswer()
     } else {
-      console.log("Wrong answer. The right answer is :", country.name.common);
+      setIsCorrect(false);
+      setShowModal(true);
       generateRandomAnswer()
+      console.log("Wrong answer. The right answer is :", country.name.common);
     }
   };
 
   return (
-    setAnswerArray.length > 0 && (
-      <div className="question">
-        <div className="flag">
-          <img src={country.flags.png} alt="flag" />
+    <>
+      {answerArray.length > 0 && answerArray.includes(country.name.common) && (
+        <div className="question">
+          <div className="flag">
+            <img src={country.flags.png} alt="flag" />
+          </div>
+          <div className="answers">
+            {answerArray.map((answer, key) => (
+              <div
+                className="answer"
+                key={"answer_" + key}
+                onClick={() => selectAnswer(answer)}
+              >
+                {answer}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="answers">
-          {answerArray.map((answer, key) => (
-            <div
-              className="answer"
-              key={"answer_" + key}
-              onClick={() => selectAnswer(answer)}
-            >
-              {answer}
-            </div>
-          ))}
-        </div>
-      </div>
-    )
+      )}
+      {showModal && (
+        <Modal
+          gameMode={"countryQuizz"}
+          solution={country.name.common}
+          country={country}
+          isCorrect={isCorrect}
+          nextQuestion={nextQuestion}
+        />
+      )}
+    </>
   );
 };
 

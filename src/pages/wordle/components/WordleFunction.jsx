@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useWordle from "../../../hooks/useWordle";
 import Grid from "./Grid";
 import Keypad from "./Keypad";
-import Modal from "./Modal";
+import Modal from "../../../components/Modal";
 
 export default function WordleFunction({ solution }) {
   const {
@@ -64,6 +64,7 @@ export default function WordleFunction({ solution }) {
           turn={turn}
           solution={solution}
           closeSideMenu={closeSideMenu}
+          gameMode={"wordle"}
         />
       )}
     </div>

@@ -24,7 +24,6 @@ const Quizz = ({ countries, allCountries }) => {
           allCountries[Math.floor(Math.random() * allCountries.length)];
         const fourthAnswer =
           allCountries[Math.floor(Math.random() * allCountries.length)];
-        console.log(firstAnswer, secondAnswer, thirdAnswer, fourthAnswer);
         let tmpArray = [];
         if ((firstAnswer, secondAnswer, thirdAnswer, fourthAnswer)) {
           tmpArray.push(
@@ -44,6 +43,10 @@ const Quizz = ({ countries, allCountries }) => {
   useEffect(() => {
     generateRandomAnswer();
   }, []);
+
+  const nextQuestion = () => {
+    setCurrentQuestion(currentQuestion + 1);
+  };
 
   return (
     <div>
@@ -72,13 +75,11 @@ const Quizz = ({ countries, allCountries }) => {
                   country={country}
                   randomCountryName={randomCountryName}
                   generateRandomAnswer={generateRandomAnswer}
+                  nextQuestion={nextQuestion}
                 />
               )}
             </React.Fragment>
           ))}
-          <button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
-            +
-          </button>
         </>
       )}
     </div>

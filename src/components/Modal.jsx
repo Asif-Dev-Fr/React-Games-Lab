@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Modal = ({
   isCorrect,
@@ -7,8 +7,12 @@ const Modal = ({
   closeSideMenu,
   gameMode,
   country,
-  nextQuestion
+  nextQuestion,
+  currentQuestion,
+  limit,
+  numberCorrectAnswer,
 }) => {
+  const [finish, setFinish] = useState(false)
   return (
     <>
       {gameMode === "wordle" && (
@@ -36,33 +40,52 @@ const Modal = ({
       {gameMode === "countryQuizz" && (
         <div className="wordleModal">
           <div className="modalCss">
-            <h2>{isCorrect ? "Right answer !" : "Wrong answer :("}</h2>
-            <p className="text-center mt-3">
-              <img src={country.flags.png} alt="flag" height="180px" />
-            </p>
-            <div>
-              <p className="solution">Country : {solution}</p>
-              <div className="row">
-                <div className="col-lg-6 col-12">
-                  <p>
-                    Capital : <span>{country.capital}</span>
-                  </p>
-                  <p>
-                    Population : <span>{country.population}</span>
-                  </p>
-                </div>
-                <div className="col-lg-6 col-12 text-center">
-                  <div>Spoken languages</div>
+            {!finish? (
+              <div>
+                <h2>{isCorrect ? "Right answer !" : "Wrong answer :("}</h2>
+                <h5 className="questionNumber">
+                  {currentQuestion + 1}/{limit}
+                </h5>
+                <p className="text-center mt-3">
+                  <img src={country.flags.png} alt="flag" height="180px" />
+                </p>
+                <div>
+                  <p className="solution">Country : {solution}</p>
+                  <div className="row">
+                    <div className="col-lg-6 col-12">
+                      <p>
+                        Capital : <span>{country.capital}</span>
+                      </p>
+                      <p>
+                        Population : <span>{country.population}</span>
+                      </p>
+                    </div>
+                    <div className="col-lg-6 col-12 text-center">
+                      <div>Spoken main languages</div>
 
-                  {Object.entries(country.languages).map((lang, key) => (
-                    <div key={"lang_"+ key}> {lang[1]} </div>
-                  ))}
+                      {Object.entries(country.languages)
+                        .slice(0, 4)
+                        .map((lang, key) => (
+                          <div key={"lang_" + key}> {lang[1]} </div>
+                        ))}
+                    </div>
+                  </div>
                 </div>
+                <p className="text-center mt-3">
+                  {currentQuestion + 1 !== limit ? (
+                    <button onClick={() => nextQuestion()}>
+                      Next question
+                    </button>
+                  ) : (
+                    <button onClick={() => setFinish(true)}>Finish quizz</button>
+                  )}
+                </p>
               </div>
-            </div>
-            <p className="text-center">
-              <button onClick={() => nextQuestion()}>Next question</button>
-            </p>
+            ) : (
+              <div>
+                <h3>Your score is {numberCorrectAnswer}</h3>
+              </div>
+            )}
           </div>
         </div>
       )}

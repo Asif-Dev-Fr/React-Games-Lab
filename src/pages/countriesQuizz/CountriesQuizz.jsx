@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Quizz from "./components/Quizz";
 import "../../assets/css/quizz.css";
+import Loader from "../../components/Loader";
 
 const CountriesQuizz = () => {
   const [countries, setCountries] = useState([]);
@@ -37,11 +38,15 @@ const CountriesQuizz = () => {
   }, []);
 
   return (
-    !loading && (
-      <div>
-        <Quizz countries={countries} allCountries={allCountries} />
-      </div>
-    )
+    <div>
+      {!loading ? (
+        <div>
+          <Quizz countries={countries} allCountries={allCountries} />
+        </div>
+      ) : (
+        <Loader loading={loading} />
+      )}
+    </div>
   );
 };
 

@@ -5,6 +5,7 @@ const Quizz = ({ countries, allCountries }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [gameMode, setGameMode] = useState("");
   const [randomCountryName, setRandomCountryName] = useState([]);
+  const [numberCorrectAnswer, setNumberCorrectAnswer] = useState(0);
 
   // Methods :
   const defineGameMode = (selected) => {
@@ -45,7 +46,15 @@ const Quizz = ({ countries, allCountries }) => {
   }, []);
 
   const nextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
+    setCurrentQuestion((prevQuestion) => {
+      return prevQuestion + 1;
+    });
+  };
+
+  const handleScore = () => {
+    setNumberCorrectAnswer((prevScore) => {
+      return prevScore + 1;
+    });
   };
 
   return (
@@ -76,6 +85,10 @@ const Quizz = ({ countries, allCountries }) => {
                   randomCountryName={randomCountryName}
                   generateRandomAnswer={generateRandomAnswer}
                   nextQuestion={nextQuestion}
+                  currentQuestion={currentQuestion}
+                  limit={Object.keys(countries).length}
+                  handleScore={handleScore}
+                  numberCorrectAnswer={numberCorrectAnswer}
                 />
               )}
             </React.Fragment>

@@ -1,41 +1,51 @@
 import React, { useEffect, useState } from "react";
+import Loader from "../../../components/Loader";
 import Modal from "../../../components/Modal";
 
-const Question = ({ country, randomCountryName, generateRandomAnswer, nextQuestion }) => {
-  console.log(country, randomCountryName);
+const Question = ({
+  country,
+  randomCountryName,
+  generateRandomAnswer,
+  nextQuestion,
+  currentQuestion,
+  limit,
+  handleScore,
+  numberCorrectAnswer,
+}) => {
   const [answerArray, setAnswerArray] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Methods
   useEffect(() => {
+    setLoading(true);
     if (!randomCountryName.includes(country.name.common)) {
       let randomPlace = Math.floor(Math.random() * randomCountryName.length);
       let tmpArray = randomCountryName;
       tmpArray.pop();
       tmpArray.splice(randomPlace, 0, country.name.common);
-      console.log(tmpArray);
       setAnswerArray(tmpArray);
     }
+    setLoading(false);
   }, []);
 
   const selectAnswer = (answer) => {
     if (answer === country.name.common) {
       setIsCorrect(true);
+      handleScore();
       setShowModal(true);
-      generateRandomAnswer()
-      console.log("Right answer");
+      generateRandomAnswer();
     } else {
       setIsCorrect(false);
       setShowModal(true);
-      generateRandomAnswer()
-      console.log("Wrong answer. The right answer is :", country.name.common);
+      generateRandomAnswer();
     }
   };
 
   return (
     <>
-      {answerArray.length > 0 && answerArray.includes(country.name.common) && (
+      {!loading ? (
         <div className="question">
           <div className="flag">
             <img src={country.flags.png} alt="flag" />
@@ -52,6 +62,8 @@ const Question = ({ country, randomCountryName, generateRandomAnswer, nextQuesti
             ))}
           </div>
         </div>
+      ) : (
+        <Loader loading={loading} />
       )}
       {showModal && (
         <Modal
@@ -60,6 +72,9 @@ const Question = ({ country, randomCountryName, generateRandomAnswer, nextQuesti
           country={country}
           isCorrect={isCorrect}
           nextQuestion={nextQuestion}
+          currentQuestion={currentQuestion}
+          limit={limit}
+          numberCorrectAnswer={numberCorrectAnswer}
         />
       )}
     </>

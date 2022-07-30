@@ -11,8 +11,16 @@ const Modal = ({
   currentQuestion,
   limit,
   numberCorrectAnswer,
+  fetchCountries,
+  setShowModal
 }) => {
   const [finish, setFinish] = useState(false)
+
+  // Methods 
+  const newGame = () => {
+    setShowModal(false)
+    fetchCountries()
+  }
   return (
     <>
       {gameMode === "wordle" && (
@@ -84,6 +92,7 @@ const Modal = ({
             ) : (
               <div>
                 <h3>Your score is {numberCorrectAnswer}</h3>
+                <button onClick={newGame}>Choose a game mode</button>
               </div>
             )}
           </div>

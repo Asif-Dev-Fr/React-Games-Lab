@@ -11,6 +11,7 @@ const Question = ({
   limit,
   handleScore,
   numberCorrectAnswer,
+  fetchCountries
 }) => {
   const [answerArray, setAnswerArray] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -75,6 +76,8 @@ const Question = ({
           currentQuestion={currentQuestion}
           limit={limit}
           numberCorrectAnswer={numberCorrectAnswer}
+          fetchCountries={fetchCountries}
+          setShowModal={setShowModal}
         />
       )}
     </>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 
-const Quizz = ({ countries, allCountries }) => {
+const Quizz = ({ countries, allCountries, fetchCountries }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [gameMode, setGameMode] = useState("");
   const [randomCountryName, setRandomCountryName] = useState([]);
@@ -13,7 +13,6 @@ const Quizz = ({ countries, allCountries }) => {
     else if (selected === "country") setGameMode("country");
   };
 
-  // Methods :
   const generateRandomAnswer = async () => {
     try {
       if (allCountries) {
@@ -89,6 +88,7 @@ const Quizz = ({ countries, allCountries }) => {
                   limit={Object.keys(countries).length}
                   handleScore={handleScore}
                   numberCorrectAnswer={numberCorrectAnswer}
+                  fetchCountries={fetchCountries}
                 />
               )}
             </React.Fragment>

@@ -5,7 +5,9 @@ const Quizz = ({ countries, allCountries, fetchCountries }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [gameMode, setGameMode] = useState("");
   const [randomCountryName, setRandomCountryName] = useState([]);
+  const [randomCountryFlags, setRandomCountryFlags] = useState([]);
   const [numberCorrectAnswer, setNumberCorrectAnswer] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   // Methods :
   const defineGameMode = (selected) => {
@@ -16,6 +18,7 @@ const Quizz = ({ countries, allCountries, fetchCountries }) => {
   const generateRandomAnswer = async () => {
     try {
       if (allCountries) {
+        setLoading(true)
         const firstAnswer =
           allCountries[Math.floor(Math.random() * allCountries.length)];
         const secondAnswer =
@@ -24,16 +27,27 @@ const Quizz = ({ countries, allCountries, fetchCountries }) => {
           allCountries[Math.floor(Math.random() * allCountries.length)];
         const fourthAnswer =
           allCountries[Math.floor(Math.random() * allCountries.length)];
-        let tmpArray = [];
+        let tmpCountryName = [];
+        let tmpCountryFlag = [];
         if ((firstAnswer, secondAnswer, thirdAnswer, fourthAnswer)) {
-          tmpArray.push(
+          tmpCountryName.push(
             firstAnswer.name.common,
             secondAnswer.name.common,
             thirdAnswer.name.common,
             fourthAnswer.name.common
           );
+          setRandomCountryName(tmpCountryName);
+          
+          tmpCountryFlag.push(
+            firstAnswer.flags.png,
+            secondAnswer.flags.png,
+            thirdAnswer.flags.png,
+            fourthAnswer.flags.png
+          )
+          setRandomCountryFlags(tmpCountryFlag)
+          
         }
-        setRandomCountryName(tmpArray);
+        setLoading(false)
       }
     } catch (error) {
       console.error(error);
@@ -58,23 +72,23 @@ const Quizz = ({ countries, allCountries, fetchCountries }) => {
 
   return (
     <div>
-      {gameMode === "" && (
+      {gameMode === "" && !loading && (
         <div className="row justify-content-center selectGameMode">
-          <div
-            className="col-lg-4 col-12"
-            onClick={() => defineGameMode("flag")}
-          >
-            Guess flag
-          </div>
           <div
             className="col-lg-4 col-12"
             onClick={() => defineGameMode("country")}
           >
             Guess country
           </div>
+          <div
+            className="col-lg-4 col-12"
+            onClick={() => defineGameMode("flag")}
+          >
+            Guess flag
+          </div>
         </div>
       )}
-      {gameMode === "flag" && (
+      {(gameMode === "country" || gameMode === "flag") && (
         <>
           {countries.map((country, index) => (
             <React.Fragment key={index}>
@@ -89,6 +103,8 @@ const Quizz = ({ countries, allCountries, fetchCountries }) => {
                   handleScore={handleScore}
                   numberCorrectAnswer={numberCorrectAnswer}
                   fetchCountries={fetchCountries}
+                  gameMode={gameMode}
+                  randomCountryFlags={randomCountryFlags}
                 />
               )}
             </React.Fragment>

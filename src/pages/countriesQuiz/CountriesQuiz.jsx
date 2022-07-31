@@ -39,7 +39,7 @@ const CountriesQuiz = () => {
 
   return (
     <div>
-      {!loading ? (
+      {!loading && countries.length === 20 ? (
         <div>
           <Quiz
             countries={countries}

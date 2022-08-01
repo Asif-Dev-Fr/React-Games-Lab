@@ -12,15 +12,24 @@ const Modal = ({
   limit,
   numberCorrectAnswer,
   fetchCountries,
-  setShowModal
+  setShowModal,
 }) => {
-  const [finish, setFinish] = useState(false)
+  const [finish, setFinish] = useState(false);
 
-  // Methods 
+  // Methods
   const newGame = () => {
-    setShowModal(false)
-    fetchCountries()
-  }
+    setShowModal(false);
+    fetchCountries();
+  };
+
+  const result = () => {
+    if (numberCorrectAnswer < 5) return <h4>You need to study more</h4>;
+    else if (numberCorrectAnswer >= 5 && numberCorrectAnswer < 10)
+      return <h4>Not bad but you can do better</h4>;
+    else if (numberCorrectAnswer >= 10 && numberCorrectAnswer < 15)
+      return <h4>Almost perfect !</h4>;
+    else if (numberCorrectAnswer >= 15) return <h4>You are a flag master !</h4>;
+  };
   return (
     <>
       {gameMode === "wordle" && (
@@ -48,7 +57,7 @@ const Modal = ({
       {gameMode === "countryQuizz" && (
         <div className="wordleModal">
           <div className="modalCss">
-            {!finish? (
+            {!finish ? (
               <div>
                 <h2>{isCorrect ? "Right answer !" : "Wrong answer :("}</h2>
                 <h5 className="questionNumber">
@@ -85,13 +94,16 @@ const Modal = ({
                       Next question
                     </button>
                   ) : (
-                    <button onClick={() => setFinish(true)}>Finish quizz</button>
+                    <button onClick={() => setFinish(true)}>
+                      Finish quizz
+                    </button>
                   )}
                 </p>
               </div>
             ) : (
               <div>
                 <h3>Your score is {numberCorrectAnswer}</h3>
+                {result()}
                 <button onClick={newGame}>Choose a game mode</button>
               </div>
             )}

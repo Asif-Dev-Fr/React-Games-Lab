@@ -22,6 +22,7 @@ const NavbarComponent = ({ isMobile }) => {
             <Nav.Link href="/memory">Memory</Nav.Link>
             <Nav.Link href="/wordle">Wordle</Nav.Link>
             <Nav.Link href="/countriesQuiz">Countries Quiz</Nav.Link>
+            <Nav.Link href="/piano">Piano</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

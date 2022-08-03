@@ -10,13 +10,14 @@ import Mastermind from "./pages/mastermind/Mastermind";
 import Memory from "./pages/memory/Memory";
 import Wordle from "./pages/wordle/Wordle";
 import CountriesQuiz from "./pages/countriesQuiz/CountriesQuiz";
+import Piano from "./pages/piano/Piano";
 
 function App() {
-  // Mobile view 
-  const [isMobile, setIsMobile] = useState(false)
+  // Mobile view
+  const [isMobile, setIsMobile] = useState(false);
   function handleWindowSizeChange() {
-    if(window.innerWidth && window.innerWidth < 768) setIsMobile(true)
-    else setIsMobile(false) 
+    if (window.innerWidth && window.innerWidth < 768) setIsMobile(true);
+    else setIsMobile(false);
   }
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
@@ -36,6 +37,7 @@ function App() {
           <Route path="/memory" element={<Memory />} />
           <Route path="/wordle" element={<Wordle />} />
           <Route path="/countriesQuiz" element={<CountriesQuiz />} />
+          <Route path="piano" element={<Piano />} />
         </Routes>
       </Router>
     </div>

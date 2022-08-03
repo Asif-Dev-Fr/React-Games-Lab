@@ -32,6 +32,12 @@ const Homepage = () => {
           Countries Quizz
         </Button>
       </Link>
+
+      <Link to="/piano">
+        <Button variant="dark" className="mt-2">
+          Piano
+        </Button>
+      </Link>
     </div>
   );
 };

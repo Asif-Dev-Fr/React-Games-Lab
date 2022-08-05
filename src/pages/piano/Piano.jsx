@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/css/piano.css";
 import Note_A from "../../assets/sounds/piano_public_notes_a.mp3";
 import Note_AF from "../../assets/sounds/piano_public_notes_af.mp3";
@@ -65,12 +65,32 @@ const Piano = () => {
       sound: Note_B,
     },
   ]);
+
+  const [audio, setAudio] = useState(null);
+
+  // Methods :
+  const findSound = (sound) => {
+    console.log(sound);
+    if (sound) setAudio(new Audio(sound));
+  };
+
+  const playSound = () => {
+    if (audio) audio.play();
+  };
+
+  useEffect(() => {
+    playSound();
+  }, [audio]);
   return (
     <div className="pianoContainer">
       <h2 className="mt-5">Piano</h2>
-      <div className='keyNoteContainer'>
+      <div className="keyNoteContainer">
         {Object.entries(keyNoteList).map((note, index) => (
-          <KeyNote key={"keynote_" + index} note={note[1]} />
+          <KeyNote
+            key={"keynote_" + index}
+            note={note[1]}
+            findSound={findSound}
+          />
         ))}
       </div>
     </div>

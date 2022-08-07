@@ -37,3 +37,18 @@
   text-transform: uppercase;
   font-weight: 600;
 }
+
+.pianoContainer .musicSheet {
+  margin-top: 25px;
+}
+
+.pianoContainer .musicSheet select {
+  width: 80%
+}
+
+@media screen and (max-width: 700px) {
+  .pianoContainer .keyNoteContainer {
+    margin: 25px auto;
+    width: 94%;
+  }
+}

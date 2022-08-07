@@ -13,6 +13,7 @@ import Note_F from "../../assets/sounds/piano_public_notes_f.mp3";
 import Note_G from "../../assets/sounds/piano_public_notes_g.mp3";
 import Note_GF from "../../assets/sounds/piano_public_notes_gf.mp3";
 import KeyNote from "./components/KeyNote";
+import MusicSheet from "./components/MusicSheet";
 
 const Piano = () => {
   const [keyNoteList] = useState([
@@ -84,14 +85,19 @@ const Piano = () => {
   return (
     <div className="pianoContainer">
       <h2 className="mt-5">Piano</h2>
-      <div className="keyNoteContainer">
-        {Object.entries(keyNoteList).map((note, index) => (
-          <KeyNote
-            key={"keynote_" + index}
-            note={note[1]}
-            findSound={findSound}
-          />
-        ))}
+      <div className="row">
+        <div className="keyNoteContainer col-lg-6 col-12">
+          {Object.entries(keyNoteList).map((note, index) => (
+            <KeyNote
+              key={"keynote_" + index}
+              note={note[1]}
+              findSound={findSound}
+            />
+          ))}
+        </div>
+        <div className="col-lg-6 col-12">
+          <MusicSheet />
+        </div>
       </div>
     </div>
   );

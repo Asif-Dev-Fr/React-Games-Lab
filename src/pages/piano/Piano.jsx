@@ -70,9 +70,14 @@ const Piano = () => {
   const [audio, setAudio] = useState(null);
 
   // Methods :
-  const findSound = (sound) => {
-    console.log(sound);
+  const handleClick = (event, sound) => {
     if (sound) setAudio(new Audio(sound));
+
+    let id = document.getElementById(event.target.id);
+    id.classList.add("newBg");
+    setTimeout(() => {
+      id.classList.remove("newBg");
+    }, 100);
   };
 
   const playSound = () => {
@@ -82,16 +87,18 @@ const Piano = () => {
   useEffect(() => {
     playSound();
   }, [audio]);
+
   return (
     <div className="pianoContainer">
       <h2 className="mt-5">Piano</h2>
-      <div className="row">
+      <div className="row" style={{ width: "100%" }}>
         <div className="keyNoteContainer col-lg-6 col-12">
           {Object.entries(keyNoteList).map((note, index) => (
             <KeyNote
               key={"keynote_" + index}
               note={note[1]}
-              findSound={findSound}
+              index={index}
+              handleClick={handleClick}
             />
           ))}
         </div>

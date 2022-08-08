@@ -25,7 +25,7 @@ const MusicSheet = () => {
         <option value="JingleBell">Jingle Bell</option>
         <option value="TwinkleLittleStar">Twinkle Twinkle Little Star</option>
       </Form.Select>
-      <div style={{ textAlign: 'left' }}>{defineImage()}</div>
+      <div className="selectedSheet">{defineImage()}</div>
     </div>
   );
 };

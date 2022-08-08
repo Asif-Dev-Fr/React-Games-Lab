@@ -1,19 +1,19 @@
 import React from "react";
 
-const KeyNote = ({ note, findSound }) => {
-  
+const KeyNote = ({ note, handleClick, index }) => {
   return (
     <>
       {note.keyLetter.includes("f") && note.keyLetter.length === 2 ? (
         <div
           className="singleKeyBlack"
-          onClick={() => findSound(note.sound)}
+          id={index}
+          onClick={(e) => handleClick(e, note.sound)}
         ></div>
       ) : (
         <div
           className="singleKeyWhite"
-          style={{ marginLeft: "-5px" }}
-          onClick={() => findSound(note.sound)}
+          id={index}
+          onClick={(e) => handleClick(e, note.sound)}
         >
           <span>{note.keyLetter}</span>
         </div>

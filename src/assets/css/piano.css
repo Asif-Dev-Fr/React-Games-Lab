@@ -19,13 +19,11 @@
   justify-content: end;
   cursor: pointer;
   margin-left: -5px;
-  background-color: #fff;
 }
 
 .pianoContainer .keyNoteContainer .singleKeyBlack {
   width: 30px;
   height: 200px;
-  background-color: #000;
   position: relative;
   margin-left: -17px;
   margin-right: -11px;
@@ -33,10 +31,10 @@
   cursor: pointer;
 }
 
-.pianoContainer .keyNoteContainer .singleKeyWhite.newBg, .pianoContainer .keyNoteContainer .singleKeyBlack.newBg {
+.pianoContainer .keyNoteContainer .singleKeyWhite.newBg,
+.pianoContainer .keyNoteContainer .singleKeyBlack.newBg {
   background-color: lightseagreen;
 }
-
 
 .pianoContainer .keyNoteContainer .singleKeyWhite span {
   color: #000;
@@ -49,7 +47,7 @@
 }
 
 .pianoContainer .musicSheet select {
-  width: 80%
+  width: 80%;
 }
 
 .pianoContainer .musicSheet .selectedSheet {

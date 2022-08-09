@@ -68,16 +68,16 @@ const Piano = () => {
   ]);
 
   const [audio, setAudio] = useState(null);
+  const [pressedKey, setPressedKey] = useState(null);
 
   // Methods :
-  const handleClick = (event, sound) => {
-    if (sound) setAudio(new Audio(sound));
-
-    let id = document.getElementById(event.target.id);
-    id.classList.add("newBg");
+  const handleClick = (key, sound) => {
+    setPressedKey(key);
     setTimeout(() => {
-      id.classList.remove("newBg");
+      setPressedKey(null);
     }, 100);
+
+    if (sound) setAudio(new Audio(sound));
   };
 
   const playSound = () => {
@@ -99,6 +99,7 @@ const Piano = () => {
               note={note[1]}
               index={index}
               handleClick={handleClick}
+              pressedKey={pressedKey}
             />
           ))}
         </div>

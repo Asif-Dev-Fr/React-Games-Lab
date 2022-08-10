@@ -33,11 +33,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
-          <Route path="/mastermind" element={<Mastermind />} />
+          {/* <Route path="/mastermind" element={<Mastermind />} /> */}
           <Route path="/memory" element={<Memory />} />
           <Route path="/wordle" element={<Wordle />} />
           <Route path="/countriesQuiz" element={<CountriesQuiz />} />
-          <Route path="piano" element={<Piano />} />
+          <Route path="/piano" element={<Piano />} />
         </Routes>
       </Router>
     </div>

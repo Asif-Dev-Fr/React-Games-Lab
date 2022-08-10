@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import * as ProjectsList from "../assets/data/projectsList.json";
 
 const NavbarComponent = ({ isMobile }) => {
+  const [projects] = useState(ProjectsList);
   return (
     <header>
       <Navbar
@@ -17,12 +19,11 @@ const NavbarComponent = ({ isMobile }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/tic-tac-toe">Tic Tac Toe</Nav.Link>
-            <Nav.Link href="/mastermind">Mastermind</Nav.Link>
-            <Nav.Link href="/memory">Memory</Nav.Link>
-            <Nav.Link href="/wordle">Wordle</Nav.Link>
-            <Nav.Link href="/countriesQuiz">Countries Quiz</Nav.Link>
-            <Nav.Link href="/piano">Piano</Nav.Link>
+            {Object.entries(projects.list).map((project, key) => (
+              <React.Fragment key={"project_" + key}>
+                <Nav.Link href={project[1].path}>{project[1].title}</Nav.Link>
+              </React.Fragment>
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

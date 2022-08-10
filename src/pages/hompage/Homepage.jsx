@@ -1,43 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import * as ProjectsList from "../../assets/data/projectsList.json";
 
 const Homepage = () => {
+  const [projects] = useState(ProjectsList);
   return (
     <div className="homepage">
-      <Link to="/tic-tac-toe">
-        <Button variant="dark">Tic Tac Toe </Button>
-      </Link>
-
-      <Link to="/mastermind">
-        <Button variant="dark" className="mt-2">
-          Mastermind
-        </Button>
-      </Link>
-
-      <Link to="/memory">
-        <Button variant="dark" className="mt-2">
-          Memory
-        </Button>
-      </Link>
-
-      <Link to="/wordle">
-        <Button variant="dark" className="mt-2">
-          Wordle
-        </Button>
-      </Link>
-
-      <Link to="/countriesQuiz">
-        <Button variant="dark" className="mt-2">
-          Countries Quizz
-        </Button>
-      </Link>
-
-      <Link to="/piano">
-        <Button variant="dark" className="mt-2">
-          Piano
-        </Button>
-      </Link>
+      {Object.entries(projects.list).map((project, key) => (
+        <React.Fragment key={"project_" + key}>
+          <Link to={project[1].path} className={key !== 0 ? "mt-2" : ""}>
+            <Button variant="dark">{project[1].title}</Button>
+          </Link>
+        </React.Fragment>
+      ))}
     </div>
   );
 };

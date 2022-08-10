@@ -1,0 +1,29 @@
+{
+  "list": [
+    {
+      "thumbnail": "tic-tac-toe",
+      "title": "Tic Tac Toe",
+      "path": "/tic-tac-toe"
+    },
+    {
+      "thumbnail": "memory",
+      "title": "Memory",
+      "path": "/memory"
+    },
+    {
+      "thumbnail": "wordle",
+      "title": "Wordle",
+      "path": "/wordle"
+    },
+    {
+      "thumbnail": "countriesQuiz",
+      "title": "Countries Quizz",
+      "path": "/countriesQuiz"
+    },
+    {
+      "thumbnail": "piano",
+      "title": "Piano",
+      "path": "/piano"
+    }
+  ]
+}

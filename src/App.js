@@ -11,6 +11,7 @@ import Memory from "./pages/memory/Memory";
 import Wordle from "./pages/wordle/Wordle";
 import CountriesQuiz from "./pages/countriesQuiz/CountriesQuiz";
 import Piano from "./pages/piano/Piano";
+import Puzzle from "./pages/puzzle/Puzzle";
 
 function App() {
   // Mobile view
@@ -38,6 +39,7 @@ function App() {
           <Route path="/wordle" element={<Wordle />} />
           <Route path="/countriesQuiz" element={<CountriesQuiz />} />
           <Route path="/piano" element={<Piano />} />
+          <Route path="/puzzle" element={<Puzzle />} />
         </Routes>
       </Router>
     </div>

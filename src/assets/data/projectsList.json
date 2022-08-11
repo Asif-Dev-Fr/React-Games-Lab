@@ -24,6 +24,11 @@
       "thumbnail": "piano",
       "title": "Piano",
       "path": "/piano"
+    },
+    {
+      "thumbnail": "puzzle",
+      "title": "Puzzle",
+      "path": "/puzzle"
     }
   ]
 }

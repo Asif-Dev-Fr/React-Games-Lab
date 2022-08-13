@@ -70,7 +70,7 @@ const Board = (props) => {
     }
   };
 
-  const renderPieces = () => {
+  const renderPieces = () =>
     positions.map((i) => (
       <Tiles
         key={i}
@@ -80,7 +80,6 @@ const Board = (props) => {
         {...props}
       />
     ));
-  };
 
   const createCanvas = () => {
     let canvas = document.getElementById("canvas");
@@ -162,7 +161,7 @@ const Board = (props) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div style={puzzleWrapperStyles({ width, height })}>
+      <div className="board" style={puzzleWrapperStyles({ width, height })}>
         {renderPieces()}
       </div>
       <style>

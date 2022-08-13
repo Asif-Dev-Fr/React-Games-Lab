@@ -91,7 +91,7 @@ const Piano = () => {
   return (
     <div className="pianoContainer">
       <h2 className="mt-5">Piano</h2>
-      <div className="row" style={{ width: "100%" }}>
+      <div className="row justify-content-between">
         <div className="keyNoteContainer col-lg-6 col-12">
           {Object.entries(keyNoteList).map((note, index) => (
             <KeyNote

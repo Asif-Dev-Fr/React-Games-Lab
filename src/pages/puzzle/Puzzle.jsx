@@ -39,12 +39,20 @@ const Puzzle = () => {
             onChange={(event) => {
               console.log(event.target.files[0]);
               setImage(event.target.files[0]);
+              setShowInput(false);
             }}
           />
         </Form.Group>
       )}
 
-      {image && <Board image={image} />}
+      {image && (
+        <Board
+          image={typeof image === "string" ? image : URL.createObjectURL(image)}
+          width={500}
+          height={500}
+          pieces={5}
+        />
+      )}
     </div>
   );
 };

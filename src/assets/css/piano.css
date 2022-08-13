@@ -1,6 +1,8 @@
 .pianoContainer {
   text-align: center;
   height: 80vh;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .pianoContainer .keyNoteContainer {
@@ -44,6 +46,10 @@
 
 .pianoContainer .musicSheet {
   margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pianoContainer .musicSheet select {
@@ -60,6 +66,9 @@
 }
 
 @media screen and (max-width: 700px) {
+  .pianoContainer {
+    width: 100%;
+  }
   .pianoContainer .keyNoteContainer {
     margin: 25px auto;
     width: 94%;

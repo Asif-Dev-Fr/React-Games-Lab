@@ -6,10 +6,13 @@
   margin-top: 20px;
 }
 
-.puzzleContainer .chooseImage button {
+.puzzleContainer .chooseImage button, .puzzleContainer .chooseDifficulty, button {
   margin-left: 10px;
 }
 
+.puzzleContainer .chooseImage, .puzzleContainer input {
+  margin-top: 5px;
+}
 
 #canvas {
   border: 1px solid red;

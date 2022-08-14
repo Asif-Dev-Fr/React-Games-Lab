@@ -11,6 +11,11 @@
       "path": "/memory"
     },
     {
+      "thumbnail": "puzzle",
+      "title": "Puzzle",
+      "path": "/puzzle"
+    },
+    {
       "thumbnail": "wordle",
       "title": "Wordle",
       "path": "/wordle"
@@ -24,11 +29,6 @@
       "thumbnail": "piano",
       "title": "Piano",
       "path": "/piano"
-    },
-    {
-      "thumbnail": "puzzle",
-      "title": "Puzzle",
-      "path": "/puzzle"
     }
   ]
 }

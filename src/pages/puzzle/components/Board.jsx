@@ -5,10 +5,11 @@ import { puzzleWrapperStyles, shuffle, isEqual } from "./utils";
 import Tiles from "./Tiles";
 
 const Board = (props) => {
-  const { width, height, pieces, image } = props;
+  const { width, height, pieces, image, finished, over } = props;
   console.log(image);
   const rootPositions = [...Array(pieces * pieces).keys()];
   const [positions, setPositions] = useState(shuffle(rootPositions));
+  
 
   // Methods
   // const coords = {
@@ -44,8 +45,6 @@ const Board = (props) => {
     y: Math.floor(pos / pieces) * (height / pieces),
   }));
 
-  console.log(coords);
-
   const onDropPiece = (sourcePosition, dropPosition) => {
     const oldPositions = positions.slice();
     const newPositions = [];
@@ -67,6 +66,7 @@ const Board = (props) => {
 
     if (isEqual(rootPositions, newPositions)) {
       console.log("Done");
+      over()
     }
   };
 
@@ -159,7 +159,7 @@ const Board = (props) => {
   //   image && <div className="mt-3">{/* <canvas id="canvas"></canvas> */}</div>
   // );
 
-  return (
+  return !finished ? (
     <DndProvider backend={HTML5Backend}>
       <div className="board" style={puzzleWrapperStyles({ width, height })}>
         {renderPieces()}
@@ -172,6 +172,13 @@ const Board = (props) => {
       `}
       </style>
     </DndProvider>
+  ) : (
+    <React.Fragment>
+      <div className="mt-3 puzzleImg">
+        <img src={image} alt="imageDone" width={width} height={height}/>
+        <p className="text-center mt-2"> Well done ! </p>
+      </div>
+    </React.Fragment>
   );
 };
 

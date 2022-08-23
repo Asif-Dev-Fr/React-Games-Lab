@@ -9,10 +9,16 @@ const Puzzle = () => {
   const [showInput, setShowInput] = useState(false);
   const [image, setImage] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
+  const [finished, setFinished] = useState(false);
 
   // Methods
+  const over = () => {
+    setFinished(true);
+  };
+
   const chooseImage = (selection) => {
     if (selection === "default") {
+      setFinished(false);
       setShowInput(false);
       setImage(Default);
     } else if (selection === "own") {
@@ -22,6 +28,7 @@ const Puzzle = () => {
   };
 
   const chooseDifficulty = (number) => {
+    setFinished(false);
     setImage(null);
     setShowInput(false);
 
@@ -64,7 +71,7 @@ const Puzzle = () => {
 
       {difficulty && (
         <>
-          <div className="chooseImage">
+          <div className="chooseImage mt-2">
             <Button variant="success" onClick={() => chooseImage("default")}>
               Default Image
             </Button>
@@ -77,7 +84,6 @@ const Puzzle = () => {
               <Form.Control
                 type="file"
                 onChange={(event) => {
-                  console.log(event.target.files[0]);
                   setImage(event.target.files[0]);
                   setShowInput(false);
                 }}
@@ -93,6 +99,8 @@ const Puzzle = () => {
           width={difficulty * 100}
           height={difficulty * 100}
           pieces={difficulty}
+          finished={finished}
+          over={over}
         />
       )}
     </div>

@@ -22,8 +22,10 @@ body {
   color: white;
 }
 
-.me-auto .nav-link {
+.me-auto a {
   color: #fff !important;
+  text-decoration: none;
+  margin-left: 15px;
 }
 
 /* Css loadding Start*/
@@ -278,7 +280,7 @@ body {
     margin-left: 10px !important;
   }
 
-  .me-auto .nav-link {
+  .me-auto a {
     margin-left: 10px;
   }
 

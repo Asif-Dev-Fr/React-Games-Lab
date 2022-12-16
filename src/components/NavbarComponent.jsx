@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import * as ProjectsList from "../assets/data/projectsList.json";
+import { Link } from "react-router-dom";
 
 const NavbarComponent = ({ isMobile }) => {
   const [projects] = useState(ProjectsList);
@@ -21,7 +22,7 @@ const NavbarComponent = ({ isMobile }) => {
           <Nav className="me-auto">
             {Object.entries(projects.list).map((project, key) => (
               <React.Fragment key={"project_" + key}>
-                <Nav.Link href={project[1].path}>{project[1].title}</Nav.Link>
+                <Link to={project[1].path}>{project[1].title}</Link>
               </React.Fragment>
             ))}
           </Nav>
